@@ -1,0 +1,46 @@
+---
+// src/components/News.astro
+---
+<section id="news" class="section container">
+    <h2>Новости и События</h2>
+    <div class="news-list">
+        <article class="news-item">
+            <h3><a href="/blog/">Срочный сбор на лечение!</a></h3>
+            <p class="date">12 Ноября, 2025</p>
+            <p>Нам поступил звонок о собаке, сбитой машиной. Срочно нужны средства на операцию...</p>
+        </article>
+        <article class="news-item">
+            <h3><a href="/blog/">Закупка корма на зиму</a></h3>
+            <p class="date">10 Ноября, 2025</p>
+            <p>Благодаря вашим пожертвованиям мы смогли закупить 100 кг сухого корма. Отчет в блоге...</p>
+        </article>
+        <article class="news-item">
+            <h3><a href="/blog/">Следующий выезд</a></h3>
+            <p class="date">8 Ноября, 2025</p>
+            <p>В эту субботу (15.11) мы едем в район Глдани. Присоединяйтесь или поддержите нас донатом...</p>
+        </article>
+    </div>
+</section>
+
+<style>
+    .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .news-item {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1.5rem;
+    }
+    .news-item h3 a {
+        color: #333;
+        text-decoration: none;
+    }
+    .news-item h3 a:hover {
+        color: #FF6347;
+    }
+    .news-item .date {
+        color: #888;
+        font-size: 0.9rem;
+    }
+</style>

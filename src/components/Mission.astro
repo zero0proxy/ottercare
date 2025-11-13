@@ -1,0 +1,34 @@
+---
+// src/components/Mission.astro
+---
+<section id="mission" class="section container">
+    <h2>Наша Миссия</h2>
+    <p class="subtitle">Мы не можем пройти мимо.</p>
+    <div class="mission-content">
+        <img src="https://placehold.co/500x300/eee/333?text=Ян+кормит+собаку" alt="Волонтер кормит собаку" />
+        <div>
+            <p>Меня зовут Ян. Каждый день я вижу десятки голодных глаз на улицах Тбилиси. В Грузии, к сожалению, нет государственной программы поддержки, и скоро зима. Животные просто не выживут без нашей помощи.</p>
+            <p>Наша миссия — обеспечить едой и медицинской помощью как можно больше бездомных собак и кошек. Мы собираем пожертвования на корм, лечение, стерилизацию и теплые будки.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .mission-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+    .mission-content img {
+        width: 100%;
+        border-radius: 8px;
+    }
+    
+    /* Для экранов больше 768px */
+    @media (min-width: 768px) {
+        .mission-content {
+            grid-template-columns: 1fr 1.5fr; /* Картинка | Текст */
+        }
+    }
+</style>

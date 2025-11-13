@@ -1,0 +1,86 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Эта функция getStaticPaths ОБЯЗАТЕЛЬНА для Astro
+// Она создает список всех страниц, которые нужно сгенерировать
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }, // Передаем весь пост в 'props'
+  }));
+}
+
+// Получаем 'post' из props, которые мы передали выше
+const { post } = Astro.props;
+
+// 'Content' — это специальный компонент, 
+// который рендерит (отображает) ваш Markdown
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+  <div class="container">
+    <article class="post-content">
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt={post.data.title} class="post-hero" />
+      )}
+
+      <h1>{post.data.title}</h1>
+      <p class="post-date">
+        Опубликовано: {post.data.pubDate.toLocaleDateString('ru-RU', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        })}
+      </p>
+
+      <Content />
+
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .post-content {
+    max-width: 800px; /* Делаем текст поста удобным для чтения */
+    margin: 2rem auto;
+  }
+  .post-hero {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  .post-date {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* Эти стили применятся к HTML, который 
+    генерируется из вашего Markdown 
+  */
+  .post-content :global(h2) {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+  .post-content :global(p) {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .post-content :global(img) {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  .post-content :global(a) {
+    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВЕТ ССЫЛОК */
+    text-decoration: underline;
+  }
+  .post-content :global(a:hover) {
+    color: var(--color-primary-purple-hover);
+  }
+</style>

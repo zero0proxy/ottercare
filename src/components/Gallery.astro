@@ -1,0 +1,53 @@
+---
+// src/components/Gallery.astro
+---
+<section id="gallery" class="section container">
+    <h2>Фотогалерея</h2>
+    <p class="subtitle">Так выглядит наша работа. Нажмите на фото, чтобы узнать больше в нашем блоге.</p>
+    
+    <div class="carousel">
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Собака+1" alt="Спасенная собака">
+        </a>
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Кот+1" alt="Спасенный кот">
+        </a>
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Собака+2" alt="Собака ест">
+        </a>
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Кот+2" alt="Кот в переноске">
+        </a>
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Собака+3" alt="Щенки">
+        </a>
+        <a href="/blog/" class="gallery-item">
+            <img src="https://placehold.co/300x400/ccc/333?text=Кот+3" alt="Кот в клинике">
+        </a>
+    </div>
+</section>
+
+<style>
+    .carousel {
+        display: flex;
+        overflow-x: auto; /* Включает горизонтальную прокрутку */
+        gap: 1rem;
+        padding-bottom: 1rem; /* Оставляем место для скроллбара */
+        -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+    }
+    .gallery-item {
+        flex: 0 0 250px; /* Каждая картинка 250px в ширину, не сжимается */
+        height: 350px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+    .gallery-item:hover {
+        transform: scale(1.03);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>

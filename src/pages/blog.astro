@@ -1,0 +1,99 @@
+---
+// src/pages/blog.astro
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// 1. Получаем все посты из коллекции 'blog'
+const posts = await getCollection('blog');
+
+// 2. Сортируем их, чтобы новые были сверху
+const sortedPosts = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Блог | Помощь животным Тбилиси">
+  <div class="container">
+    <h1>Блог и Отчеты</h1>
+    <p>
+      Здесь мы публикуем отчеты о закупках, историях спасения и анонсы. 
+      Прозрачность — наш главный приоритет.
+    </p>
+
+    <div class="post-list">
+      {sortedPosts.map(post => (
+        <article class="post-preview">
+          <a href={`/blog/${post.slug}/`}>
+            <img 
+              src={post.data.heroImage || 'https://placehold.co/400x250/eee/333?text=Нет+Фото'} 
+              alt="Обложка поста" 
+              class="preview-image"
+            />
+          </a>
+          <div class="preview-content">
+            <h2 class="preview-title">
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </h2>
+            <p class="preview-date">
+              {post.data.pubDate.toLocaleDateString('ru-RU', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </p>
+            <p class="preview-desc">{post.data.description}</p>
+            <a href={`/blog/${post.slug}/`} class="read-more">Читать далее &rarr;</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .post-preview {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .post-preview {
+      grid-template-columns: 300px 1fr; /* Картинка | Текст */
+    }
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .preview-title a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+  }
+  .preview-title a:hover {
+    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВЕТ НАВЕДЕНИЯ */
+  }
+  .preview-date {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .read-more {
+    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВET */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .read-more:hover {
+    color: var(--color-primary-purple-hover);
+  }
+</style>

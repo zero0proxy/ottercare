@@ -1,0 +1,93 @@
+---
+// src/components/Header.astro
+---
+<header>
+    <nav class="container">
+        <a href="/" class="logo-link">
+            <img src="/images/logo.png" alt="Логотип Помощь Животным Тбилиси" class="logo-image" />
+            <span class="logo-text">Otter Care</span>
+        </a>
+        <ul>
+            <li><a href="/#mission">Миссия</a></li>
+            <li><a href="/#gallery">Галерея</a></li>
+            <li><a href="/#news">Новости</a></li>
+            <li><a href="/blog/">Блог</a></li>
+            <li><a href="/contacts/">Контакты</a></li>
+            
+            <li><a href="/donate/" class="donate-button">Помочь</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    header {
+        background: var(--color-bg-peach-main);
+        border-bottom: 1px solid var(--color-border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-link {
+        display: flex; /* Чтобы логотип и текст были в одну линию */
+        align-items: center; /* Выравнивание по центру */
+        text-decoration: none;
+        color: var(--color-text-dark); /* Цвет текста для лого */
+        gap: 0.5rem; /* Отступ между картинкой и текстом */
+    }
+    .logo-image {
+        height: 40px; /* Высота вашего логотипа */
+        width: auto;
+    }
+    .logo-text {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    a {
+        text-decoration: none;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    a:hover {
+        color: var(--color-primary-purple);
+    }
+    a.donate-button {
+        background: var(--color-primary-purple);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    a.donate-button:hover {
+        background: var(--color-primary-purple-hover);
+        color: white;
+    }
+
+    /* Адаптивность: скрываем текст логотипа на маленьких экранах, оставляем только картинку */
+    @media (max-width: 768px) {
+        .logo-text {
+            display: none;
+        }
+        .logo-link {
+            gap: 0; /* Убираем отступ, если текста нет */
+        }
+    }
+</style>

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.5"
+    "@lottiefiles/lottie-player": "^2.0.12",
+    "astro": "^5.15.5",
+    "zod": "^3.25.76"
   }
 }

@@ -1,0 +1,19 @@
+---
+// src/components/Footer.astro
+---
+<footer>
+    <div class="container">
+        <p>&copy; {new Date().getFullYear()} Помощь животным в Тбилиси. Все права защищены.</p>
+    </div>
+</footer>
+
+<style>
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  background: var(--color-bg-peach-main); /* <-- НОВЫЙ ФОН */
+}
+</style>

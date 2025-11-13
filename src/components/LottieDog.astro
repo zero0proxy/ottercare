@@ -1,0 +1,47 @@
+---
+// src/components/LottieDog.astro
+---
+<lottie-player 
+    src="/lottie/running-dog.json" 
+    background="transparent" 
+    speed="1" 
+    loop 
+    autoplay
+    class="lottie-dog"
+></lottie-player>
+
+<style>
+.lottie-dog {
+    /* 2. УБИРАЕМ все позиционирование */
+    /* position: absolute; (убрали) */
+    /* bottom: 0; (убрали) */
+    /* left: 50%; (убрали) */
+    /* transform: translateX(-50%); (убрали) */
+    /* z-index: 5; (убрали) */
+
+    /* 3. Увеличиваем размер */
+    width: 500px;
+    height: 500px;
+    
+    /* 4. Делаем ее чуть ярче, т.к. она в центре */
+    opacity: 0.9; 
+
+    /* 5. Настраиваем отступы, чтобы убрать лишнее 
+       пространство внутри Lottie-анимации */
+    margin-top: -3rem;
+    margin-bottom: -2rem;
+}
+
+@media (max-width: 768px) {
+    .lottie-dog {
+        width: 300px; /* Увеличили мобильный размер */
+        height: 300px;
+        margin-top: -1.5rem; /* Настроили мобильные отступы */
+        margin-bottom: -1rem;
+    }
+}
+</style>
+
+<script>
+  import '@lottiefiles/lottie-player';
+</script>

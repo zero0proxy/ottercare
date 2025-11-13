@@ -1,0 +1,29 @@
+---
+// src/layouts/Layout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro'; // <-- УБЕДИТЕСЬ, ЧТО У ВАС ЕСТЬ ЭТОТ КОМПОНЕНТ
+import AnimatedBackground from '../components/AnimatedBackground.astro'; // <-- 1. Импортируем
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Помощь бездомным животным в Тбилиси. Присоединяйтесь к волонтерскому проекту Яна." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<AnimatedBackground /> <Header />
+		<main> <slot /> </main>
+		<Footer /> </body>
+</html>

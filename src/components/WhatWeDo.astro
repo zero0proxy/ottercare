@@ -1,0 +1,56 @@
+---
+// src/components/WhatWeDo.astro
+---
+<section id="what-we-do" class="section container">
+    <h2>Чем мы занимаемся</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <img src="https://placehold.co/400x300/ddd/333?text=Мешок+корма" alt="Закупка корма" />
+            <h3>Регулярное кормление</h3>
+            <p>Каждые выходные мы развозим десятки килограмм корма по всему городу.</p>
+        </div>
+        <div class="card">
+            <img src="https://placehold.co/400x300/ddd/333?text=Ветеринар" alt="Лечение в клинике" />
+            <h3>Лечение и стерилизация</h3>
+            <p>Помогаем раненым животным и оплачиваем стерилизацию, чтобы остановить рост популяции.</p>
+        </div>
+        <div class="card">
+            <img src="https://placehold.co/400x300/ddd/333?text=Будка" alt="Теплая будка" />
+            <h3>Помощь зимой</h3>
+            <p>Строим утепленные будки и раздаем подстилки, чтобы помочь им пережить холода.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .card {
+        border: 1px solid var(--color-border);
+        background: var(--color-bg-peach-main); /* <-- НОВЫЙ ФОН КАРТОЧЕК */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        overflow: hidden;
+        text-align: center;
+    }
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .card h3 {
+        margin: 1.5rem 0 0.5rem 0;
+    }
+    .card p {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>

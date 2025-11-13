@@ -1,0 +1,42 @@
+---
+// src/pages/donate.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Как помочь | Помощь животным Тбилиси">
+	<div class="donation-options">
+		<div class="bank-details">
+			<h3>Или переводом на счет в грузинском банке:</h3>
+			<p><strong>Bank:</strong> (Название вашего банка, напр. TBC Bank)</p>
+			</div>
+	</div>
+</Layout>
+
+<style>
+	.donation-options {
+		margin-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.donate-link {
+		display: block;
+		padding: 1.5rem;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		text-decoration: none;
+		border-radius: 8px;
+		font-size: 1.2rem;
+	}
+	.coffee { background: #FFDD00; color: #000; }
+	.patreon { background: #FF424D; }
+
+	.bank-details {
+		margin-top: 2rem;
+		background: var(--color-bg-peach-alt); /* <-- НОВЫЙ ФОН */
+		border: 1px solid var(--color-border);
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+</style>
