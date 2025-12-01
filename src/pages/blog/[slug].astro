@@ -1,10 +1,7 @@
----
-// src/pages/blog/[slug].astro
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-// Эта функция getStaticPaths ОБЯЗАТЕЛЬНА для Astro
-// Она создает список всех страниц, которые нужно сгенерировать
+
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   
@@ -14,11 +11,8 @@ export async function getStaticPaths() {
   }));
 }
 
-// Получаем 'post' из props, которые мы передали выше
 const { post } = Astro.props;
 
-// 'Content' — это специальный компонент, 
-// который рендерит (отображает) ваш Markdown
 const { Content } = await post.render();
 ---
 
@@ -46,7 +40,7 @@ const { Content } = await post.render();
 
 <style>
   .post-content {
-    max-width: 800px; /* Делаем текст поста удобным для чтения */
+    max-width: 800px;
     margin: 2rem auto;
   }
   .post-hero {
@@ -61,9 +55,6 @@ const { Content } = await post.render();
     margin-bottom: 2rem;
   }
 
-  /* Эти стили применятся к HTML, который 
-    генерируется из вашего Markdown 
-  */
   .post-content :global(h2) {
     font-size: 2rem;
     margin-top: 3rem;
@@ -77,7 +68,7 @@ const { Content } = await post.render();
     border-radius: 8px;
   }
   .post-content :global(a) {
-    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВЕТ ССЫЛОК */
+    color: var(--color-primary-purple);
     text-decoration: underline;
   }
   .post-content :global(a:hover) {
