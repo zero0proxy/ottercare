@@ -1,12 +1,8 @@
----
-// src/pages/blog.astro
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-// 1. Получаем все посты из коллекции 'blog'
 const posts = await getCollection('blog');
 
-// 2. Сортируем их, чтобы новые были сверху
 const sortedPosts = posts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -67,7 +63,7 @@ const sortedPosts = posts.sort(
   
   @media (min-width: 768px) {
     .post-preview {
-      grid-template-columns: 300px 1fr; /* Картинка | Текст */
+      grid-template-columns: 300px 1fr;
     }
   }
 
@@ -82,14 +78,14 @@ const sortedPosts = posts.sort(
     text-decoration: none;
   }
   .preview-title a:hover {
-    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВЕТ НАВЕДЕНИЯ */
+    color: var(--color-primary-purple);
   }
   .preview-date {
     color: var(--color-text-muted);
     font-size: 0.9rem;
   }
   .read-more {
-    color: var(--color-primary-purple); /* <-- НОВЫЙ ЦВET */
+    color: var(--color-primary-purple);
     text-decoration: none;
     font-weight: bold;
   }
